@@ -4,17 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DARK 77</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em;
+            margin-top: 50px;
+        }
+        .button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin: 20px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: darkred;
+        }
+        .admin-button {
+            background-color: grey;
+        }
+        .admin-button:hover {
+            background-color: darkgrey;
+        }
+        footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="title">Dark</h1>
-        <button id="dark-hikr-btn" class="button">Dark H!k!r</button>
-        <button id="admin-btn" class="button locked">إدارة</button>
-    </div>
-    <div id="content" class="content">
-        <p>الرجاء الضغط على الزر لعرض المحتوى.</p>
-    </div>
+    <h1>DARK 77</h1>
+    <button class="button" onclick="window.location.href='dark_hikr.html'">Dark H!k!r</button>
+    <button class="button admin-button" onclick="window.location.href='admin.html'">صفحة الإدارة (مغلقة)</button>
+    
+    <footer>
+        <p>&copy; 2024 DARK 77. جميع الحقوق محفوظة.</p>
+    </footer>
 </body>
 </html>

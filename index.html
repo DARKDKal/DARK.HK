@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARK 77</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title">DARK 77</h1>
+        <div class="options">
+            <button onclick="location.href='dark_hikr.php'" class="option-button">Dark H!k!r</button>
+            <button onclick="openLoginModal()" class="option-button locked">مقفل</button>
+        </div>
+    </div>
+
+    <!-- نافذة كلمة المرور -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeLoginModal()" class="close-btn">&times;</span>
+            <h2>أدخل كلمة السر</h2>
+            <form action="admin.php" method="post">
+                <input type="text" name="username" placeholder="اسم المستخدم" required>
+                <input type="password" name="password" placeholder="كلمة السر" required>
+                <button type="submit">دخول</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

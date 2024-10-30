@@ -1,22 +1,65 @@
+<!-- admin.html -->
 <!DOCTYPE html>
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>صفحة الإدارة</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #ff0000;
+            font-family: Arial, sans-serif;
+        }
+        input[type="text"], input[type="password"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ff0000;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>صفحة الإدارة</h1>
-    </header>
-    <main>
-        <textarea id="newContent" rows="10" cols="30" placeholder="أدخل المحتوى الجديد هنا..."></textarea>
-        <button onclick="saveContent()">حفظ التعديلات</button>
-    </main>
-    <footer>
-        <p>حقوق الطبع والنشر &copy; 2024 DARK 77</p>
-    </footer>
-    <script src="script.js"></script>
+    <h1>صفحة الإدارة</h1>
+    <form id="admin-form">
+        <label for="password">كلمة المرور:</label>
+        <input type="password" id="password" required>
+        <button type="submit">دخول</button>
+    </form>
+    <div id="admin-content" style="display:none;">
+        <h2>تحكم في المحتوى</h2>
+        <textarea id="page-content" rows="10" placeholder="اكتب المحتوى هنا..."></textarea>
+        <button onclick="saveContent()">حفظ</button>
+    </div>
+
+    <script>
+        const correctPassword = 'alzyod77';
+
+        document.getElementById('admin-form').onsubmit = function(event) {
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+            if (password === correctPassword) {
+                document.getElementById('admin-content').style.display = 'block';
+                document.getElementById('admin-form').style.display = 'none';
+            } else {
+                alert('كلمة المرور غير صحيحة!');
+            }
+        };
+
+        function saveContent() {
+            const content = document.getElementById('page-content').value;
+            // هنا يمكنك إضافة كود لحفظ المحتوى (على سبيل المثال، استخدام API أو تخزين محلي)
+            alert('تم حفظ المحتوى!'); // هذا مجرد تنبيه لإظهار أن العملية تمت
+        }
+    </script>
 </body>
 </html>

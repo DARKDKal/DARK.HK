@@ -35,7 +35,19 @@
 </head>
 <body>
     <h1>محتوى Dark H!k!r</h1>
-    <p>محتوى الصفحة الافتراضي هنا.</p>
+    <p id="content">جارٍ تحميل المحتوى...</p>
     <button class="back-button" onclick="window.location.href='index.html'">العودة إلى الصفحة الرئيسية</button>
+
+    <script>
+        fetch('content.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('content').innerText = data.dark_hikr_content;
+            })
+            .catch(error => {
+                document.getElementById('content').innerText = 'فشل تحميل المحتوى.';
+                console.error('Error fetching content:', error);
+            });
+    </script>
 </body>
 </html>

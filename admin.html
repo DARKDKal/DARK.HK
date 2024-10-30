@@ -1,65 +1,49 @@
-<!-- admin.html -->
 <!DOCTYPE html>
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة الإدارة</title>
-    <style>
-        body {
-            background-color: #000;
-            color: #ff0000;
-            font-family: Arial, sans-serif;
-        }
-        input[type="text"], input[type="password"], textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ff0000;
-            border-radius: 5px;
-        }
-        button {
-            background-color: #ff0000;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <title>إدارة DARK 77</title>
 </head>
 <body>
-    <h1>صفحة الإدارة</h1>
-    <form id="admin-form">
-        <label for="password">كلمة المرور:</label>
-        <input type="password" id="password" required>
-        <button type="submit">دخول</button>
+    <h1>إدارة المحتوى</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <label for="fileUpload">اختر ملفًا لتحميله:</label>
+        <input type="file" id="fileUpload" name="file" required>
+        <button type="submit">تحميل</button>
     </form>
-    <div id="admin-content" style="display:none;">
-        <h2>تحكم في المحتوى</h2>
-        <textarea id="page-content" rows="10" placeholder="اكتب المحتوى هنا..."></textarea>
-        <button onclick="saveContent()">حفظ</button>
-    </div>
+
+    <h2>المحتوى الحالي:</h2>
+    <ul id="fileList"></ul>
 
     <script>
-        const correctPassword = 'alzyod77';
+        const form = document.getElementById('uploadForm');
+        const fileList = document.getElementById('fileList');
 
-        document.getElementById('admin-form').onsubmit = function(event) {
-            event.preventDefault();
-            const password = document.getElementById('password').value;
-            if (password === correctPassword) {
-                document.getElementById('admin-content').style.display = 'block';
-                document.getElementById('admin-form').style.display = 'none';
-            } else {
-                alert('كلمة المرور غير صحيحة!');
-            }
-        };
-
-        function saveContent() {
-            const content = document.getElementById('page-content').value;
-            // هنا يمكنك إضافة كود لحفظ المحتوى (على سبيل المثال، استخدام API أو تخزين محلي)
-            alert('تم حفظ المحتوى!'); // هذا مجرد تنبيه لإظهار أن العملية تمت
+        // عرض الملفات الحالية
+        function displayFiles() {
+            const files = JSON.parse(localStorage.getItem('uploadedFiles')) || [];
+            fileList.innerHTML = '';
+            files.forEach(file => {
+                const li = document.createElement('li');
+                li.textContent = file;
+                fileList.appendChild(li);
+            });
         }
+
+        // إضافة حدث لتحميل الملفات
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const fileInput = document.getElementById('fileUpload');
+            const files = JSON.parse(localStorage.getItem('uploadedFiles')) || [];
+            files.push(fileInput.files[0].name); // حفظ اسم الملف فقط
+            localStorage.setItem('uploadedFiles', JSON.stringify(files));
+            displayFiles();
+            fileInput.value = ''; // مسح الاختيار
+        });
+
+        displayFiles(); // عرض الملفات عند تحميل الصفحة
     </script>
 </body>
 </html>

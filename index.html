@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARK 77</title>
+    <style>
+        body {
+            background-color: #000; /* خلفية سوداء */
+            color: #ff0000; /* نص أحمر */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 48px; /* حجم خط كبير */
+            margin-bottom: 30px;
+        }
+
+        .button {
+            background-color: #ff0000; /* زر أحمر */
+            color: #000; /* نص أسود */
+            border: none;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px; /* زوايا مدورة */
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #e60000; /* تأثير عند المرور فوق الزر */
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px; /* هوامش أقل على الأجهزة الصغيرة */
+            }
+
+            h1 {
+                font-size: 32px; /* حجم خط أصغر على الأجهزة الصغيرة */
+            }
+
+            .button {
+                font-size: 16px; /* حجم زر أصغر على الأجهزة الصغيرة */
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>DARK 77</h1>
+    <a href="dark_hikr.html" class="button">Dark H!k!r</a>
+    <button class="button" onclick="openAdmin()">مقفل</button>
+
+    <script>
+        function openAdmin() {
+            const password = prompt("أدخل كلمة المرور:");
+            if (password === "alzyod77") {
+                window.location.href = "admin.html"; // انتقل إلى صفحة الإدارة
+            } else {
+                alert("كلمة المرور غير صحيحة!");
+            }
+        }
+    </script>
+</body>
+</html>
